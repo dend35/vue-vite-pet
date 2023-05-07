@@ -1,7 +1,9 @@
 <script setup>
 import {reactive, ref} from "vue";
 
-let addItem = reactive({});
+let addItem = reactive({
+    status: ''
+});
 const list = ref([
     {title: "test1", text: "test1_text_wip", status: "wip"},
     {title: "test2", text: "test2_text_completed", status: "completed"},
@@ -47,7 +49,7 @@ function add(item) {
                   />
                   <select 
                       v-model="addItem.status" style="flex: 1 0 auto;">
-                      <option value="" disabled selected>Status</option>
+                      <option value="" selected hidden>Status</option>
                       <option value="new">New</option>
                       <option value="wip">WIP</option>
                       <option value="completed">Completed</option>
@@ -73,6 +75,8 @@ function add(item) {
     width: 30vw;
     height: 40vh;
     overflow: hidden;
+    border-radius: 10px;
+    padding: 10px;
 }
 .item{
     border: 2px solid rgba(255, 255, 255, .1);
